@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class InvokeBrowser {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -39,6 +39,11 @@ public class InvokeBrowser {
 				
 						
 				regLink.click();
+				
+				
+				RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
+				
+				regPageAuto.registrationPageAutomation(driver);
 			}
 			
 			
