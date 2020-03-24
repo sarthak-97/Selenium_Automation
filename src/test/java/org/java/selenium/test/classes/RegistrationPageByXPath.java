@@ -1,4 +1,4 @@
-package org.java.selenium.test;
+package org.java.selenium.test.classes;
 
 import java.util.Random;
 
@@ -26,8 +26,8 @@ public class RegistrationPageByXPath {
 		driver.findElement(By.xpath("//input[@name='telephone']")).sendKeys("987457763211");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("passWord");
 		driver.findElement(By.xpath("//input[@name='confirm']")).sendKeys("passWord");
+		driver.findElement(By.xpath("//input[@name='newsletter' and @value='0']")).click();
 		driver.findElement(By.xpath("//input[@name='newsletter' and @value='1']")).click();
-
 		driver.findElement(By.xpath("//input[@name='agree']")).click();
 
 		Thread.sleep(2000);

@@ -1,5 +1,7 @@
 package org.java.selenium.test;
 
+import org.java.selenium.test.classes.GetErrorMsgs;
+import org.java.selenium.test.classes.RegistrationPageByXPath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,25 +36,32 @@ public class InvokeBrowser {
 
 				regLink.click();
 
-				//Using By name 
-				
-			/*	RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
+				// Using By name
 
-				regPageAuto.registrationPageAutomation(driver);
-				
-				*/
-				
-				
-				//*********Using Xpath***************
-				
+				/*
+				 * RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
+				 * 
+				 * regPageAuto.registrationPageAutomation(driver);
+				 * 
+				 */
+
+				// *********Using Xpath***************
+/*
 				RegistrationPageByXPath regByXPath = new RegistrationPageByXPath();
-				regByXPath.registrationPageByXPath(driver);
+				regByXPath.registrationPageByXPath(driver);*/
+
+				
+				//************getting error msgs************
+				
+				 GetErrorMsgs err = new  GetErrorMsgs();
+				 
+				 err.getErrorMsgs(driver);
 				
 			}
 
 		}
 
-		System.out.println("The new title is :" + driver.getTitle());
+	//System.out.println("The new title is :" + driver.getTitle());
 
 		/**
 		 ******** for pausing the browser screen

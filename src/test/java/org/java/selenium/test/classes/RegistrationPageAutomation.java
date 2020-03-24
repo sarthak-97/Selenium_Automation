@@ -1,4 +1,4 @@
-package org.java.selenium.test;
+package org.java.selenium.test.classes;
 
 import java.util.Random;
 
