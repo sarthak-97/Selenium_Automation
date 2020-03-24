@@ -1,7 +1,13 @@
 package org.java.selenium.test;
 
 import org.java.selenium.test.classes.GetErrorMsgs;
-import org.java.selenium.test.classes.RegistrationPageByXPath;
+import org.java.selenium.test.classes.account.AddNewAddress;
+import org.java.selenium.test.classes.account.LogoutMyAccount;
+import org.java.selenium.test.classes.account.MyAccountDropDown;
+import org.java.selenium.test.classes.login.GetLoginPage;
+import org.java.selenium.test.classes.login.LoginPageAutomation;
+import org.java.selenium.test.classes.registration.GetRegisterPage;
+import org.java.selenium.test.classes.registration.RegistrationPageByXPath;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,46 +28,59 @@ public class InvokeBrowser {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 
+		/**
+		 ************ opening the demo cart in google chrome**********
+		 */
+
 		driver.get("https://demo.opencart.com");
 
-		WebElement accountLink = driver.findElement(new By.ByXPath("//a[@title='My Account']"));
-		if (accountLink.isEnabled()) {
-			System.out.println("link found");
+		// *************** opening the My Account DropDown
 
-			accountLink.click();
+		MyAccountDropDown myaccount = new MyAccountDropDown();
+		 myaccount.getMyAccountDropDown(driver);
 
-			WebElement regLink = driver.findElement(new By.ByXPath("//a[text()='Register']"));
-			if (regLink.isEnabled()) {
-				System.out.println(" register link found");
+		// *************Going to login page ****************
 
-				regLink.click();
+		GetLoginPage getLoginPage = new GetLoginPage();
+		 getLoginPage.getLoginLink(driver);
 
-				// Using By name
+		 
+		 //*********Automating Login page**********
+		 
+		 LoginPageAutomation loginPage = new  LoginPageAutomation(); 
+		 loginPage.automateLoginPage(driver);
+		 
+		 LogoutMyAccount logout = new LogoutMyAccount();
+		 logout.logout(driver);
+		 
+		/* AddNewAddress addnewAddress = new AddNewAddress();
+		 addnewAddress.addNewAddress(driver);*/
+		 
+		// **********Getting to the register page ******************
 
-				/*
-				 * RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
-				 * 
-				 * regPageAuto.registrationPageAutomation(driver);
-				 * 
-				 */
+		GetRegisterPage getRegisterPage = new GetRegisterPage();
+		// getRegisterPage.getRegisterLink(driver);
 
-				// *********Using Xpath***************
-/*
-				RegistrationPageByXPath regByXPath = new RegistrationPageByXPath();
-				regByXPath.registrationPageByXPath(driver);*/
+		// ************registration page automation using class name****************
 
-				
-				//************getting error msgs************
-				
-				 GetErrorMsgs err = new  GetErrorMsgs();
-				 
-				 err.getErrorMsgs(driver);
-				
-			}
+		/*
+		 * RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
+		 * 
+		 * regPageAuto.registrationPageAutomation(driver);
+		 * 
+		 */
 
-		}
+		// *********registration page automation Using Xpath***************
 
-	//System.out.println("The new title is :" + driver.getTitle());
+		/*
+		 * RegistrationPageByXPath regByXPath = new RegistrationPageByXPath();
+		 * regByXPath.registrationPageByXPath(driver);
+		 */
+
+		// ************getting error msgs************
+
+		GetErrorMsgs errorMessages = new GetErrorMsgs();
+		//errorMessages.getErrorMsgs(driver);
 
 		/**
 		 ******** for pausing the browser screen
