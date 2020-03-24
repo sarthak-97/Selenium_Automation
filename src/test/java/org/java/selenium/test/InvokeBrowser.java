@@ -52,12 +52,12 @@ public class InvokeBrowser {
 
 		
 		
-		System.out.println(	driver.getTitle());
+		System.out.println(	"The new title is :" + driver.getTitle());
 		
 	/**
 	 ******** for pausing the browser screen 
 	 */
-		System.console().readLine();
+	//	System.console().readLine();
 		driver.close();
 
 	}
