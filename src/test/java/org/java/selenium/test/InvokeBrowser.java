@@ -22,21 +22,32 @@ public class InvokeBrowser {
 
 		driver.get("https://demo.opencart.com");
 
-		WebElement accountLink = driver.findElement(new By.ByXPath("/html/body/nav/div/div[2]/ul/li[2]/a"));
+		WebElement accountLink = driver.findElement(new By.ByXPath("//a[@title='My Account']"));
 		if (accountLink.isEnabled()) {
 			System.out.println("link found");
 
 			accountLink.click();
 
-			WebElement regLink = driver.findElement(new By.ByLinkText("Register"));
+			WebElement regLink = driver.findElement(new By.ByXPath("//a[text()='Register']"));
 			if (regLink.isEnabled()) {
 				System.out.println(" register link found");
 
 				regLink.click();
 
-				RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
+				//Using By name 
+				
+			/*	RegistrationPageAutomation regPageAuto = new RegistrationPageAutomation();
 
 				regPageAuto.registrationPageAutomation(driver);
+				
+				*/
+				
+				
+				//*********Using Xpath***************
+				
+				RegistrationPageByXPath regByXPath = new RegistrationPageByXPath();
+				regByXPath.registrationPageByXPath(driver);
+				
 			}
 
 		}
